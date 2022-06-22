@@ -1,0 +1,122 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carmarket.Infrastructure", "Carmarket.Infrastructure\Carmarket.Infrastructure.csproj", "{803D2085-50D6-40A3-8D52-10A16BF9DDE8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{480CE067-90A8-4C94-AE39-CF83B20D142A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{016F6AEA-EBB0-49D8-BFCD-6970FB26C0D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{E096D19F-223D-423B-82E7-10C5B3AB80A7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carmarket.Domain.Tests", "Carmarket.Domain.Tests\Carmarket.Domain.Tests.csproj", "{7D3D1384-F055-4FB0-A806-0ADDD25E9DDC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservices", "{95CB5115-A987-454D-9A8E-7D6FF52C51C5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carmarket.Microservice.Users", "Carmarket.Microservice.Users\Carmarket.Microservice.Users.csproj", "{87468224-1D3E-45CE-BDED-C0306A32A798}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{E3599A35-3239-42A7-B7EB-95B54B17CC63}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{EC490380-C53A-4938-9698-C9B2E38CBAE2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carmarket.Application.Identity.IS4", "Carmarket.Application.Identity.IS4\Carmarket.Application.Identity.IS4.csproj", "{E0398619-FF79-407C-9C68-D1A263617C70}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{937CCC99-7089-41DE-B61F-10E3EAFD3C81}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carmarket.Infrastructure.Data.UsersDbContext", "Carmarket.Infrastructure.Data.UsersDbContext\Carmarket.Infrastructure.Data.UsersDbContext.csproj", "{29FD3CD6-6D1D-4E70-9F49-8E3300CC195C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carmarket.Domain.Identity", "Carmarket.Domain.Identity\Carmarket.Domain.Identity.csproj", "{F4A59B02-29E5-44FE-A06E-0B561DB5969B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carmarket.Domain.BusinessException", "Carmarket.Domain.BusinessException\Carmarket.Domain.BusinessException.csproj", "{81E553F8-4E92-4862-A0A4-354ADFC811AA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Proxy", "Proxy", "{B19D1247-ED13-45E7-B52C-5D6C795911AE}"
+	ProjectSection(SolutionItems) = preProject
+		Carmarket.Application.Proxy\nginx.conf = Carmarket.Application.Proxy\nginx.conf
+		Carmarket.Application.Proxy\proxy.conf = Carmarket.Application.Proxy\proxy.conf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ssl", "ssl", "{7E3F93AE-D657-42F0-B2B0-69AD9B0AAA89}"
+	ProjectSection(SolutionItems) = preProject
+		Carmarket.Application.Proxy\ssl\localhost.crt = Carmarket.Application.Proxy\ssl\localhost.crt
+		..\..\..\..\Work\personal\OpenSSL-Win64\bin\localhost.key = ..\..\..\..\Work\personal\OpenSSL-Win64\bin\localhost.key
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{9F0CC616-2206-42F5-AE0C-DD4957238200}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{3AF16B9C-F0AA-4E75-B30F-3A8624405FA7}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Carmarket.Application.UI.Backoffice", "Carmarket.Application.UI.Backoffice\Carmarket.Application.UI.Backoffice.esproj", "{459BDEF1-1D7C-41DB-AFA0-9688E33DAF7A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{803D2085-50D6-40A3-8D52-10A16BF9DDE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{803D2085-50D6-40A3-8D52-10A16BF9DDE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{803D2085-50D6-40A3-8D52-10A16BF9DDE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{803D2085-50D6-40A3-8D52-10A16BF9DDE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D3D1384-F055-4FB0-A806-0ADDD25E9DDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D3D1384-F055-4FB0-A806-0ADDD25E9DDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D3D1384-F055-4FB0-A806-0ADDD25E9DDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D3D1384-F055-4FB0-A806-0ADDD25E9DDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87468224-1D3E-45CE-BDED-C0306A32A798}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87468224-1D3E-45CE-BDED-C0306A32A798}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87468224-1D3E-45CE-BDED-C0306A32A798}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87468224-1D3E-45CE-BDED-C0306A32A798}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0398619-FF79-407C-9C68-D1A263617C70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0398619-FF79-407C-9C68-D1A263617C70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0398619-FF79-407C-9C68-D1A263617C70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0398619-FF79-407C-9C68-D1A263617C70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29FD3CD6-6D1D-4E70-9F49-8E3300CC195C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29FD3CD6-6D1D-4E70-9F49-8E3300CC195C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29FD3CD6-6D1D-4E70-9F49-8E3300CC195C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29FD3CD6-6D1D-4E70-9F49-8E3300CC195C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4A59B02-29E5-44FE-A06E-0B561DB5969B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4A59B02-29E5-44FE-A06E-0B561DB5969B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4A59B02-29E5-44FE-A06E-0B561DB5969B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4A59B02-29E5-44FE-A06E-0B561DB5969B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81E553F8-4E92-4862-A0A4-354ADFC811AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81E553F8-4E92-4862-A0A4-354ADFC811AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81E553F8-4E92-4862-A0A4-354ADFC811AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81E553F8-4E92-4862-A0A4-354ADFC811AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F0CC616-2206-42F5-AE0C-DD4957238200}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F0CC616-2206-42F5-AE0C-DD4957238200}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F0CC616-2206-42F5-AE0C-DD4957238200}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F0CC616-2206-42F5-AE0C-DD4957238200}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AF16B9C-F0AA-4E75-B30F-3A8624405FA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AF16B9C-F0AA-4E75-B30F-3A8624405FA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AF16B9C-F0AA-4E75-B30F-3A8624405FA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AF16B9C-F0AA-4E75-B30F-3A8624405FA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{459BDEF1-1D7C-41DB-AFA0-9688E33DAF7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{459BDEF1-1D7C-41DB-AFA0-9688E33DAF7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{459BDEF1-1D7C-41DB-AFA0-9688E33DAF7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{459BDEF1-1D7C-41DB-AFA0-9688E33DAF7A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{803D2085-50D6-40A3-8D52-10A16BF9DDE8} = {E096D19F-223D-423B-82E7-10C5B3AB80A7}
+		{7D3D1384-F055-4FB0-A806-0ADDD25E9DDC} = {016F6AEA-EBB0-49D8-BFCD-6970FB26C0D4}
+		{95CB5115-A987-454D-9A8E-7D6FF52C51C5} = {480CE067-90A8-4C94-AE39-CF83B20D142A}
+		{87468224-1D3E-45CE-BDED-C0306A32A798} = {95CB5115-A987-454D-9A8E-7D6FF52C51C5}
+		{E3599A35-3239-42A7-B7EB-95B54B17CC63} = {480CE067-90A8-4C94-AE39-CF83B20D142A}
+		{EC490380-C53A-4938-9698-C9B2E38CBAE2} = {480CE067-90A8-4C94-AE39-CF83B20D142A}
+		{E0398619-FF79-407C-9C68-D1A263617C70} = {EC490380-C53A-4938-9698-C9B2E38CBAE2}
+		{937CCC99-7089-41DE-B61F-10E3EAFD3C81} = {E096D19F-223D-423B-82E7-10C5B3AB80A7}
+		{29FD3CD6-6D1D-4E70-9F49-8E3300CC195C} = {937CCC99-7089-41DE-B61F-10E3EAFD3C81}
+		{F4A59B02-29E5-44FE-A06E-0B561DB5969B} = {016F6AEA-EBB0-49D8-BFCD-6970FB26C0D4}
+		{81E553F8-4E92-4862-A0A4-354ADFC811AA} = {016F6AEA-EBB0-49D8-BFCD-6970FB26C0D4}
+		{B19D1247-ED13-45E7-B52C-5D6C795911AE} = {480CE067-90A8-4C94-AE39-CF83B20D142A}
+		{7E3F93AE-D657-42F0-B2B0-69AD9B0AAA89} = {B19D1247-ED13-45E7-B52C-5D6C795911AE}
+		{9F0CC616-2206-42F5-AE0C-DD4957238200} = {480CE067-90A8-4C94-AE39-CF83B20D142A}
+		{459BDEF1-1D7C-41DB-AFA0-9688E33DAF7A} = {E3599A35-3239-42A7-B7EB-95B54B17CC63}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3C77159B-F22E-484A-8AD9-798BE06CB3DB}
+	EndGlobalSection
+EndGlobal

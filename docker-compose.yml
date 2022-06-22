@@ -1,0 +1,71 @@
+version: "3.9"
+services:
+    nginx:
+        image: nginx:alpine
+        container_name: nginx
+        hostname: 'nginx'
+        depends_on:
+          - carmarket.identityserver
+          - carmarket.ms-users
+        volumes:
+          - ./Carmarket.Application.Proxy/nginx.conf:/etc/nginx/nginx.conf:ro
+          - ./Carmarket.Application.Proxy/proxy.conf:/etc/nginx/proxy.conf:ro
+          - ./Carmarket.Application.Proxy/ssl/carmarket.identity.crt:/etc/nginx/ssl/carmarket.identity.crt:ro
+          - ./Carmarket.Application.Proxy/ssl/carmarket.identity.key:/etc/nginx/ssl/carmarket.identity.key:ro
+          - ./Carmarket.Application.Proxy/ssl/carmarket.identity.crt:/etc/ssl/certs/carmarket.identity.crt:ro
+          - ./Carmarket.Application.Proxy/ssl/carmarket.identity.key:/etc/ssl/private/carmarket.identity.key:ro
+          - ./logs/nginx/:/var/log/nginx/
+        ports:
+          - "9000:80"
+        restart: always
+    db:
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        container_name: db
+        ports:
+          - "1433:80"
+          - "1434:1433"
+        environment:
+            SA_PASSWORD: "MyPassword001"
+            ACCEPT_EULA: "Y"
+    carmarket.identityserver:
+        image: carmarket.identityserver
+        container_name: carmarket.identityserver
+        build:
+            context: .
+            dockerfile: ./Carmarket.Application.Identity.IS4/Dockerfile
+        depends_on:
+            - db
+        ports:
+            - "8000:8000"
+        restart: always
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - ASPNETCORE_URLS=http://+:8000
+        volumes:
+            - ./logs/identityserver/:/var/log/identityserver/
+            - ~/.aspnet/https:/https:ro
+    carmarket.ms-users:
+        image: carmarket.ms-users
+        container_name: carmarket.ms-users
+        build:
+            context: .
+            dockerfile: ./Carmarket.Microservice.Users/Dockerfile
+        depends_on:
+            - carmarket.identityserver
+        ports:
+            - "8001:8001"
+        restart: always
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - ASPNETCORE_URLS=http://+:8001
+        volumes:
+            - ./logs/ms-users/:/var/log/ms-users/
+            - ~/.aspnet/https:/https:ro
+    carmarket.backoffice:
+        image: carmarket.backoffice
+        container_name: carmarket.backoffice
+        build:
+            context: .
+            dockerfile: ./Carmarket.Application.UI.Backoffice/Dockerfile
+        ports:
+            - 7999:80

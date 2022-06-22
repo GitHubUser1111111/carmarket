@@ -1,0 +1,17 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "carmarket.backoffice",
+      "composeLaunchUrl": "{Scheme}://localhost:7999",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "carmarket.identityserver": "StartWithoutDebugging",
+        "carmarket.ms-users": "StartWithoutDebugging",
+        "db": "StartWithoutDebugging",
+        "carmarket.backoffice": "StartWithoutDebugging"
+      }
+    }
+  }
+}
