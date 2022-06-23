@@ -24,7 +24,7 @@ stages:
     - task: Docker@1
       displayName: 'Build the Docker carmarket.backoffice image'
       inputs:
-        containerregistrytype: 'Container Registry'
+        containerregistrytype: 'Docker Hub Service'
         dockerRegistryEndpoint: 'Docker Hub'
         command: 'Build an image'
         dockerFile: '**/Dockerfile'
@@ -36,7 +36,7 @@ stages:
     - task: Docker@1
       displayName: 'Push the Docker carmarket.backoffice image to Docker Hub'
       inputs:
-        containerregistrytype: 'Container Registry'
+        containerregistrytype: 'Docker Hub Service'
         dockerRegistryEndpoint: 'Docker Hub'
         command: 'Push an image'
         imageName: '$(carmarket.backoffice.imageName)'
