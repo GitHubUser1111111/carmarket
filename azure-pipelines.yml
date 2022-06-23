@@ -1,0 +1,44 @@
+# ASP.NET Core (.NET Framework)
+# Build and test ASP.NET Core projects targeting the full .NET Framework.
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+  branches:
+    include:
+      - master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  carmarket.backoffice.imageName: 'dockerid5522144/carmarket.backoffice:$(Build.BuildId)'
+
+stages:
+- stage: Build
+  displayName: Build carmarket.backoffice image
+  jobs:  
+  - job: Build
+    displayName: Build and push Docker carmarket.backoffice image
+    steps:
+    - task: Docker@1
+      displayName: 'Build the Docker carmarket.backoffice image'
+      inputs:
+        containerregistrytype: 'Container Registry'
+        dockerRegistryEndpoint: 'Docker Hub'
+        command: 'Build an image'
+        dockerFile: '**/Dockerfile'
+        imageName: '$(carmarket.backoffice.imageName)'
+        includeLatestTag: true
+        useDefaultContext: false
+        buildContext: '.'
+    
+    - task: Docker@1
+      displayName: 'Push the Docker carmarket.backoffice image to Docker Hub'
+      inputs:
+        containerregistrytype: 'Container Registry'
+        dockerRegistryEndpoint: 'Docker Hub'
+        command: 'Push an image'
+        imageName: '$(carmarket.backoffice.imageName)'
+      condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+
