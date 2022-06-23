@@ -1,4 +1,9 @@
 # ASP.NET Core (.NET Framework)
+- task: Docker@2
+  inputs:
+    containerRegistry: 'Docker Hub Service'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
 # Build and test ASP.NET Core projects targeting the full .NET Framework.
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
@@ -24,8 +29,8 @@ stages:
     - task: Docker@1
       displayName: 'Build the Docker carmarket.backoffice image'
       inputs:
-        containerregistrytype: 'Docker Hub Service'
-        dockerRegistryEndpoint: 'Docker Hub'
+        containerregistrytype: 'Container Registry'
+        dockerRegistryEndpoint: 'Docker Hub Service'
         command: 'Build an image'
         dockerFile: '**/Dockerfile'
         imageName: '$(carmarket.backoffice.imageName)'
@@ -36,9 +41,8 @@ stages:
     - task: Docker@1
       displayName: 'Push the Docker carmarket.backoffice image to Docker Hub'
       inputs:
-        containerregistrytype: 'Docker Hub Service'
-        dockerRegistryEndpoint: 'Docker Hub'
+        containerregistrytype: 'Container Registry'
+        dockerRegistryEndpoint: 'Docker Hub Service'
         command: 'Push an image'
         imageName: '$(carmarket.backoffice.imageName)'
       condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
-
