@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: identityserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: identityserver
+  template:
+    metadata:
+      labels:
+        app: identityserver
+    spec:
+      containers:
+        - name: identityserver
+          image: carmarketcontainerregistry.azurecr.io/identityserver
+          ports:
+          - containerPort: 8000
+
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: carmarket.ms-users
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: carmarket.ms-users
+  template:
+    metadata:
+      labels:
+        app: carmarket.ms-users
+    spec:
+      containers:
+        - name: carmarket.ms-users
+          image: carmarketcontainerregistry.azurecr.io/carmarket.ms-users
+          ports:
+          - containerPort: 8001
+          
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: carmarket.backoffice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: carmarket.backoffice
+  template:
+    metadata:
+      labels:
+        app: carmarket.backoffice
+    spec:
+      containers:
+        - name: carmarket.backoffice
+          image: carmarketcontainerregistry.azurecr.io/carmarket.backoffice
+          ports:
+          - containerPort: 7999
