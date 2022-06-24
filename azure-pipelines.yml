@@ -13,6 +13,8 @@ pool:
 
 variables:
   carmarket.backoffice.imageName: 'dockerid5522144/carmarket.backoffice:$(Build.BuildId)'
+  carmarket.identityserver.imageName: 'dockerid5522144/carmarket.identityserver:$(Build.BuildId)'
+  carmarket.ms-users.imageName: 'dockerid5522144/carmarket.ms-users:$(Build.BuildId)'
 
 stages:
 - stage: Build
@@ -41,3 +43,46 @@ stages:
         command: 'Push an image'
         imageName: '$(carmarket.backoffice.imageName)'
       condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+      
+    - task: Docker@1
+      displayName: 'Build the Docker carmarket.identityserver image'
+      inputs:
+        containerregistrytype: 'Container Registry'
+        dockerRegistryEndpoint: 'Docker Hub Service'
+        command: 'Build an image'
+        dockerFile: '**/Dockerfile'
+        imageName: '$(carmarket.identityserver.imageName)'
+        includeLatestTag: true
+        useDefaultContext: false
+        buildContext: '.'
+    
+    - task: Docker@1
+      displayName: 'Push the Docker carmarket.identityserver image to Docker Hub'
+      inputs:
+        containerregistrytype: 'Container Registry'
+        dockerRegistryEndpoint: 'Docker Hub Service'
+        command: 'Push an image'
+        imageName: '$(carmarket.identityserver.imageName)'
+      condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    
+    - task: Docker@1
+      displayName: 'Build the Docker carmarket.ms-users image'
+      inputs:
+        containerregistrytype: 'Container Registry'
+        dockerRegistryEndpoint: 'Docker Hub Service'
+        command: 'Build an image'
+        dockerFile: '**/Dockerfile'
+        imageName: '$(carmarket.ms-users.imageName)'
+        includeLatestTag: true
+        useDefaultContext: false
+        buildContext: '.'
+    
+    - task: Docker@1
+      displayName: 'Push the Docker carmarket.ms-users image to Docker Hub'
+      inputs:
+        containerregistrytype: 'Container Registry'
+        dockerRegistryEndpoint: 'Docker Hub Service'
+        command: 'Push an image'
+        imageName: '$(carmarket.ms-users.imageName)'
+      condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+  
