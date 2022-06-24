@@ -34,7 +34,7 @@ stages:
         includeLatestTag: true
         useDefaultContext: false
         dockerFile: Carmarket.Application.UI.Backoffice/dockerfile
-        buildContext: $(Build.Repository.LocalPath)
+        buildContext: '.'
     
     - task: Docker@1
       displayName: 'Push the Docker carmarket.backoffice image to Docker Hub'
@@ -55,7 +55,7 @@ stages:
         includeLatestTag: true
         useDefaultContext: false
         dockerFile: Carmarket.Application.Identity.IS4/dockerfile
-        buildContext: $(Build.Repository.LocalPath)
+        buildContext: '.'
     
     - task: Docker@1
       displayName: 'Push the Docker carmarket.identityserver image to Docker Hub'
@@ -76,7 +76,7 @@ stages:
         includeLatestTag: true
         useDefaultContext: false
         dockerFile: Carmarket.Microservice.Users/dockerfile
-        buildContext: $(Build.Repository.LocalPath)
+        buildContext: '.'
     
     - task: Docker@1
       displayName: 'Push the Docker carmarket.ms-users image to Docker Hub'
