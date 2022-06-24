@@ -19,7 +19,7 @@ variables:
 
 stages:
 - stage: Build
-  displayName: Build carmarket.backoffice image
+  displayName: Build carmarket solution
   jobs:  
   - job: Build
     displayName: Build and push Docker carmarket.backoffice image
@@ -33,7 +33,7 @@ stages:
         imageName: '$(carmarket.backoffice.imageName)'
         includeLatestTag: true
         useDefaultContext: false
-        dockerFile: Carmarket.Application.UI.Backoffice/dockerfile
+        dockerFile: Carmarket.Application.UI.Backoffice/Dockerfile
         buildContext: '.'
     
     - task: Docker@1
@@ -54,7 +54,7 @@ stages:
         imageName: '$(carmarket.identityserver.imageName)'
         includeLatestTag: true
         useDefaultContext: false
-        dockerFile: Carmarket.Application.Identity.IS4/dockerfile
+        dockerFile: Carmarket.Application.Identity.IS4/Dockerfile
         buildContext: '.'
     
     - task: Docker@1
@@ -75,7 +75,7 @@ stages:
         imageName: '$(carmarket.ms-users.imageName)'
         includeLatestTag: true
         useDefaultContext: false
-        dockerFile: Carmarket.Microservice.Users/dockerfile
+        dockerFile: Carmarket.Microservice.Users/Dockerfile
         buildContext: '.'
     
     - task: Docker@1
