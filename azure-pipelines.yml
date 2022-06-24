@@ -12,9 +12,10 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  carmarket.backoffice.imageName: 'dockerid5522144/carmarket.backoffice:$(Build.BuildId)'
-  carmarket.identityserver.imageName: 'dockerid5522144/carmarket.identityserver:$(Build.BuildId)'
-  carmarket.ms-users.imageName: 'dockerid5522144/carmarket.ms-users:$(Build.BuildId)'
+  carmarket.backoffice.imageName: 'carmarket.backoffice:$(Build.BuildId)'
+  carmarket.identityserver.imageName: 'carmarket.identityserver:$(Build.BuildId)'
+  carmarket.ms-users.imageName: 'carmarket.ms-users:$(Build.BuildId)'
+  carmarket.sqlserver.imageName: 'carmarket.sqlserver:$(Build.BuildId)'
 
 stages:
 - stage: Build
@@ -29,11 +30,11 @@ stages:
         containerregistrytype: 'Container Registry'
         dockerRegistryEndpoint: 'Docker Azure Container Service'
         command: 'Build an image'
-        dockerFile: '**/Dockerfile'
         imageName: '$(carmarket.backoffice.imageName)'
         includeLatestTag: true
         useDefaultContext: false
-        buildContext: '.'
+        dockerFile: Carmarket.Application.UI.Backoffice/dockerfile
+        buildContext: $(Build.Repository.LocalPath)
     
     - task: Docker@1
       displayName: 'Push the Docker carmarket.backoffice image to Docker Hub'
@@ -50,11 +51,11 @@ stages:
         containerregistrytype: 'Container Registry'
         dockerRegistryEndpoint: 'Docker Azure Container Service'
         command: 'Build an image'
-        dockerFile: '**/Dockerfile'
         imageName: '$(carmarket.identityserver.imageName)'
         includeLatestTag: true
         useDefaultContext: false
-        buildContext: '.'
+        dockerFile: Carmarket.Application.Identity.IS4/dockerfile
+        buildContext: $(Build.Repository.LocalPath)
     
     - task: Docker@1
       displayName: 'Push the Docker carmarket.identityserver image to Docker Hub'
@@ -71,11 +72,11 @@ stages:
         containerregistrytype: 'Container Registry'
         dockerRegistryEndpoint: 'Docker Azure Container Service'
         command: 'Build an image'
-        dockerFile: '**/Dockerfile'
         imageName: '$(carmarket.ms-users.imageName)'
         includeLatestTag: true
         useDefaultContext: false
-        buildContext: '.'
+        dockerFile: Carmarket.Microservice.Users/dockerfile
+        buildContext: $(Build.Repository.LocalPath)
     
     - task: Docker@1
       displayName: 'Push the Docker carmarket.ms-users image to Docker Hub'
