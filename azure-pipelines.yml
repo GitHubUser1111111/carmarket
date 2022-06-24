@@ -27,7 +27,7 @@ stages:
       displayName: 'Build the Docker carmarket.backoffice image'
       inputs:
         containerregistrytype: 'Container Registry'
-        dockerRegistryEndpoint: 'Docker Hub Service'
+        dockerRegistryEndpoint: 'Docker Azure Container Service'
         command: 'Build an image'
         dockerFile: '**/Dockerfile'
         imageName: '$(carmarket.backoffice.imageName)'
@@ -39,7 +39,7 @@ stages:
       displayName: 'Push the Docker carmarket.backoffice image to Docker Hub'
       inputs:
         containerregistrytype: 'Container Registry'
-        dockerRegistryEndpoint: 'Docker Hub Service'
+        dockerRegistryEndpoint: 'Docker Azure Container Service'
         command: 'Push an image'
         imageName: '$(carmarket.backoffice.imageName)'
       condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
@@ -48,7 +48,7 @@ stages:
       displayName: 'Build the Docker carmarket.identityserver image'
       inputs:
         containerregistrytype: 'Container Registry'
-        dockerRegistryEndpoint: 'Docker Hub Service'
+        dockerRegistryEndpoint: 'Docker Azure Container Service'
         command: 'Build an image'
         dockerFile: '**/Dockerfile'
         imageName: '$(carmarket.identityserver.imageName)'
@@ -60,7 +60,7 @@ stages:
       displayName: 'Push the Docker carmarket.identityserver image to Docker Hub'
       inputs:
         containerregistrytype: 'Container Registry'
-        dockerRegistryEndpoint: 'Docker Hub Service'
+        dockerRegistryEndpoint: 'Docker Azure Container Service'
         command: 'Push an image'
         imageName: '$(carmarket.identityserver.imageName)'
       condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
@@ -69,7 +69,7 @@ stages:
       displayName: 'Build the Docker carmarket.ms-users image'
       inputs:
         containerregistrytype: 'Container Registry'
-        dockerRegistryEndpoint: 'Docker Hub Service'
+        dockerRegistryEndpoint: 'Docker Azure Container Service'
         command: 'Build an image'
         dockerFile: '**/Dockerfile'
         imageName: '$(carmarket.ms-users.imageName)'
@@ -81,7 +81,7 @@ stages:
       displayName: 'Push the Docker carmarket.ms-users image to Docker Hub'
       inputs:
         containerregistrytype: 'Container Registry'
-        dockerRegistryEndpoint: 'Docker Hub Service'
+        dockerRegistryEndpoint: 'Docker Azure Container Service'
         command: 'Push an image'
         imageName: '$(carmarket.ms-users.imageName)'
       condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
